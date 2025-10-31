@@ -32,7 +32,7 @@ class RandomQuizController(
         val quiz: AlgebraQuiz = randomQuizService.getRandomQuiz(numberOfProblems)
         logger.info("generated quiz: quiz.numberOfProblems = ${quiz.numberOfProblems}")
 
-        return randomQuizService.getRandomQuiz(numberOfProblems)
+        return quiz
     }
 
     @ResponseStatus(value = HttpStatus.BAD_REQUEST)
