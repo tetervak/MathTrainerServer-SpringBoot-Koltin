@@ -23,10 +23,10 @@ class AdditionProblemFactory(
     private val random: Random = Random.Default
 ) {
 
-    fun createRandomProblem(): AdditionProblem {
+    fun createRandomProblem(): AlgebraProblem {
         val larger = getRandomLargerValue()
         val smaller = getRandomSmallerValue(larger)
-        return AdditionProblem(a = larger - smaller, b = smaller)
+        return AlgebraProblem(a = larger - smaller, b = smaller, op = AlgebraOperation.ADDITION)
     }
 
     private fun getRandomLargerValue() =
@@ -46,10 +46,10 @@ class SubtractionProblemFactory(
     private val random: Random = Random.Default
 ){
 
-    fun createRandomProblem(): SubtractionProblem {
+    fun createRandomProblem(): AlgebraProblem {
         val larger = getRandomLargerValue()
         val smaller = getRandomSmallerValue(larger)
-        return SubtractionProblem(a = larger, b = smaller)
+        return AlgebraProblem(a = larger, b = smaller, op = AlgebraOperation.SUBTRACTION)
     }
 
     private fun getRandomLargerValue() =
@@ -69,13 +69,13 @@ class MultiplicationProblemFactory(
     private val random: Random = Random.Default
 ){
 
-    fun createRandomProblem(): MultiplicationProblem {
+    fun createRandomProblem(): AlgebraProblem {
         val first = getRandomFirstValue()
         val second = getRandomSecondValue()
         return if (random.nextBoolean())
-            MultiplicationProblem(a = first, b = second)
+            AlgebraProblem(a = first, b = second, op = AlgebraOperation.MULTIPLICATION)
         else
-            MultiplicationProblem(a = second, b = first)
+            AlgebraProblem(a = second, b = first, op = AlgebraOperation.MULTIPLICATION)
     }
 
     private fun getRandomFirstValue() =
@@ -98,13 +98,13 @@ class DivisionProblemFactory(
     private val random: Random = Random.Default
 ){
 
-    fun createRandomProblem(): DivisionProblem {
+    fun createRandomProblem(): AlgebraProblem {
         val first = getRandomFirstValue()
         val second = getRandomSecondValue()
         return if (random.nextBoolean())
-            DivisionProblem(a = first * second, b = first)
+            AlgebraProblem(a = first * second, b = first, op = AlgebraOperation.DIVISION)
         else
-            DivisionProblem(a = first * second, b = second)
+            AlgebraProblem(a = first * second, b = second, op = AlgebraOperation.DIVISION)
     }
 
     private fun getRandomFirstValue() =
